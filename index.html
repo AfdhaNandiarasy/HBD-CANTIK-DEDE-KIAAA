@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>For You 🌹</title>
+  <title>For Dede Kia🌹</title>
   <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700&family=Itim:wght@400;500;600;700&family=Handlee&family=Sriracha&display=swap" rel="stylesheet">
   <script>
     var nilaiRandom = Math.floor(Math.random() * 11);
@@ -121,46 +121,42 @@
       .input-range-container input[type="range"] {width: 90%;}
     }
     
-    /* GAYA BARU: Efek Love Putih Jatuh */
     .falling-heart-container {
         position: fixed;
         top: 0;
         left: 0;
         width: 100%;
         height: 100%;
-        pointer-events: none; /* Biar ngga ngeblokir klik */
-        z-index: 0; /* Di belakang konten utama kotak */
+        pointer-events: none; 
+        z-index: 0; 
     }
 
     .falling-heart {
         position: absolute;
-        width: 15px; /* Sesuaikan ukuran */
+        width: 15px; 
         height: 15px;
-        opacity: 0.8; /* Sesuaikan transparansi */
+        opacity: 0.8; 
         animation: heartFall linear infinite;
     }
 
-    /* Style the heart shape itself */
     .falling-heart svg {
         width: 100%;
         height: 100%;
-        fill: white; /* Love putih */
+        fill: white; 
         stroke: none;
     }
 
-    /* Definisi animasi jatuh */
     @keyframes heartFall {
         0% {
             transform: translateY(-10vh) translateX(0) rotate(0deg);
             opacity: 0.8;
         }
         100% {
-            transform: translateY(110vh) translateX(15px) rotate(15deg); /* Sedikit melenceng dan muter */
+            transform: translateY(110vh) translateX(15px) rotate(15deg); 
             opacity: 0;
         }
     }
 
-    /* Posisi, durasi, dan delay acak untuk setiap love */
     .falling-heart:nth-child(1) { left: 10%; animation-duration: 8s; animation-delay: 1s; }
     .falling-heart:nth-child(2) { left: 25%; animation-duration: 10s; animation-delay: 3s; transform: scale(1.2); }
     .falling-heart:nth-child(3) { left: 40%; animation-duration: 6s; animation-delay: 0.5s; transform: scale(0.8); }
@@ -218,7 +214,7 @@
         </div>
       </div>
     </div>
-    <div class="reset" style="margin: 20px;">
+    <div class="reset" margin="1cm">
       <button onclick="bukaEnvelope()">Buka</button>
     </div>
   </div>
@@ -302,7 +298,6 @@
   </div>
 
   <script>
-    // Permulaan
     const stiker1 = document.getElementById('stiker1');
 	const stiker1a = document.getElementById('stiker1a');
 	const stiker1b = document.getElementById('stiker1b');
@@ -311,13 +306,11 @@
     document.querySelector(".circ").style="display:none";
     setTimeout(()=>{document.querySelector("#hal1").style="transform:scale(1)";document.querySelector(".circ").style="";stiker1.style = "transform:scale(1)";}, 1000);
 
-    // Elemen Background
     const backgroundOverlay = document.querySelector('.background-overlay');
     const bgImageUrl = backgroundOverlay.getAttribute('data-src');
     backgroundOverlay.style.background = `url('${bgImageUrl}') no-repeat center center fixed`;
     backgroundOverlay.style.backgroundSize = 'cover';
 
-    // Data Kartu
     const kartu = [
       { id: 3, icon: '💖', pesan: 'harta yang…' },
       { id: 5, icon: '💐', pesan: 'di hatiku…' },
@@ -333,11 +326,10 @@
       { id: 6, icon: '🎉', pesan: 'selamanya.' }
     ];
 
-    // Animasi Kelopak Bunga
-	let animationFrameId; // Variabel global untuk menyimpan ID requestAnimationFrame
+	let animationFrameId; 
 	function mulaiKelopak(canvasId) {
 	  const canvas = document.getElementById(canvasId);
-	  if (!canvas) return; // Cek apakah canvas ada
+	  if (!canvas) return; 
 	  const ctx = canvas.getContext('2d');
 	  canvas.width = window.innerWidth;
 	  canvas.height = window.innerHeight;
@@ -360,12 +352,11 @@
 	      if (petal.y > canvas.height) petal.y = -petal.radius;
 	      petal.x += Math.sin(petal.y / 50) * 2;
 	    });
-	    animationFrameId = requestAnimationFrame(gambarKelopak); // Simpan ID animasi
+	    animationFrameId = requestAnimationFrame(gambarKelopak); 
 	  }
 	  gambarKelopak();
 	}
 
-    // Animasi Hati Jatuh (Efek teks selesai, bukan jatuh terus menerus)
     let intervalHati;
     function hatiJatuh() {
       const hati = document.createElement('div');
@@ -376,14 +367,12 @@
       document.body.appendChild(hati);
     }
 
-    // Input Range Handler
     const tahunLahirInput = document.getElementById('tahunLahir');
     const tahunLahirOutput = document.getElementById('tahunLahirOutput');
     tahunLahirInput.addEventListener('input', () => {
       tahunLahirOutput.textContent = tahunLahirInput.value;
     });
 
-    // Buka Envelope
     function bukaEnvelope() {
       const envelope = document.getElementById('envelope');
       envelope.classList.remove('close');
@@ -399,7 +388,6 @@
       }, 1200);
     }
 
-    // Halaman 3: Memory Game
     let kartuDibuka = [];
     let pasanganCocok = 0;
     let gameJalan = false;
@@ -412,7 +400,6 @@
       return array;
     }
 
-    // Halaman 3: Memory Game
 	function mulaiHal4() {
 	  kartuDibuka = [];
 	  pasanganCocok = 0;
@@ -424,7 +411,6 @@
 	
 	  const papanGame = document.getElementById('papanGame');
 	  papanGame.innerHTML = '';
-	  // Kartu diacak setiap kali game mulai
 	  acakKartu(kartu).forEach((card, index) => {
 	    const elemenKartu = document.createElement('div');
 	    elemenKartu.className = 'kartu';
@@ -450,26 +436,22 @@
   if (kartuDibuka.length === 2) {
     const [kartu1, kartu2] = kartuDibuka;
     
-    // JIKA KARTU COCOK
     if (kartu1.card.id === kartu2.card.id) {
       pasanganCocok++;
-      
-      // --- KODE BARU: Menampilkan pesan dari kartu ke layar ---
+
       document.getElementById('statusGame').innerHTML = `<b>${kartu1.card.pesan}</b>`;
-      // -------------------------------------------------------
 
       kartuDibuka = [];
       
-      // Jika semua kartu sudah terbuka
       if (pasanganCocok === 6) {
-          // Beri jeda sedikit agar pesan terakhir sempat terbaca sebelum pindah halaman
+
           setTimeout(() => {
               document.getElementById('statusGame').innerText = "Yeay! Semua cocok! 🎉";
               setTimeout(() => selesaiGame(true), 1000);
           }, 500);
       }
     } else {
-      // JIKA KARTU TIDAK COCOK
+
       setTimeout(() => {
         kartu1.elemen.classList.remove('balik');
         kartu2.elemen.classList.remove('balik');
@@ -483,12 +465,11 @@
 	  gameJalan = false;
 	  const status = document.getElementById('statusGame');
 	  if (sukses) {
-	    // Hentikan animasi kelopak
+
 	    if (animationFrameId) {
 	      cancelAnimationFrame(animationFrameId);
-	      animationFrameId = null; // Reset ID
+	      animationFrameId = null; 
 	    }
-	    // Hapus canvas
 	    const canvas = document.getElementById('game-canvas');
 	    if (canvas) {
 	      canvas.remove();
@@ -500,13 +481,12 @@
 	  }
 	}
 
-    // Animasi Kembang Api
 	function mulaiKembangApi(canvasId) {
 	  const canvas = document.getElementById(canvasId);
 	  const ctx = canvas.getContext('2d');
 	  
 	  const fireworks = [];
-	  const colors = ['#ff6f91', '#ffd1dc', '#ffffff', '#f87171']; // Warna tema romantis
+	  const colors = ['#ff6f91', '#ffd1dc', '#ffffff', '#f87171']; 
 	
 	  function createFirework() {
 	    const x = Math.random() * canvas.width;
@@ -573,7 +553,6 @@
 	  requestAnimationFrame(drawFireworks);
 	}
 	
-	// Halaman 4: Pesan Akhir
 	function mulaiHal5() {
 	  const stiker3 = document.getElementById('stiker3');
 	  const stiker3a = document.getElementById('stiker3a');
@@ -681,6 +660,4 @@
     }
   </script>
 </body>
-
 </html>
-
